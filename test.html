@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1> 待办列表</h1>
+            <input class="new-todo" placeholder="请输入待办事项" autofocus>
+        </header>
+        <section class="main">
+            <input id="toggle-all" type="checkbox">
+            <label for="toggle-all">标记全部选中</label>
+            <ul class="todo-list">
+                <li class="completed">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" checked>
+                        <label> 尝试 javascript </label>
+                        <button class="destroy"></button>
+                    </div>
+                    <input class="edit" value="Rule the web">
+                </li>
+            </ul>
+        </section>
+        <footer class="footer">
+            <ul class="filters">
+                <li>
+                    <a class="selected" href="#">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">completed</a>
+                </li>
+            </ul>
+            <button class="clear-completed">clear completed</button>
+        </footer>
+    </section>
+    <footer class="info">
+        <p>双击编辑待办事项</p>
+        <p>Template by <a href="http://todomvc.com">you</a></p>
+        <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+    </footer>
+</body>
+
+</html>
