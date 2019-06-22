@@ -5,49 +5,50 @@
     <meta charset="UTF-8">
     <title>hello</title>
     <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
     <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 </head>
 
 <body>
-    <section class="todoapp">
+    <section class="todoapp" id="app">
         <header class="header">
             <h1> 待办列表</h1>
-            <input class="new-todo" placeholder="请输入待办事项" autofocus>
+            <input class="new-todo" @keydown.enter="handleKeyDownEnter" placeholder="请输入待办事项" v-autofocus>
         </header>
         <section class="main">
-            <input id="toggle-all" class="toggle-all" type="checkbox">
-            <label for="toggle-all" class="toggle-all">标记全部选中</label>
+            <input id="toggle-all" class="toggle-all" type="checkbox" v-model="toggleAllStat">
+            <label for="toggle-all">标记全部选中</label>
             <ul class="todo-list">
-                <li class="completed">
+                <li :class="{
+                completed:item.completed,
+                editing:currentEditing === item
+                }" v-for="(item, index) in filtertodos">
                     <div class="view">
-                        <input class="toggle" type="checkbox" checked>
-                        <label> 尝试 javascript </label>
-                        <button class="destroy"></button>
+                        <input class="toggle" v-model="item.completed" type="checkbox" checked>
+                        <label @dblclick="handleGetEditingDbclick(item)">{{item.title}} </label>
+                        <button class="destroy" @click="handleRemoveTodoClick(index,$event)"></button>
                     </div>
-                    <input class="edit" value="Rule the web">
+                    <input class="edit" :value="item.title" @keydown.enter="handleSaveEditKeydown(item, index, $event)" @blur="handleSaveEditKeydown(item, index, $event)" @keydown.esc="handleCancelEditEsc" v-todofocus="currentEditing === item">
                 </li>
             </ul>
         </section>
-        <footer class="footer">
-            <ul class="filters">
-                <li>
-                    <a class="selected" href="#">All</a>
-                </li>
-                <li>
-                    <a href="#/active">Active</a>
-                </li>
-                <li>
-                    <a href="#/completed">completed</a>
-                </li>
+        <footer class="footer ">
+            <span class="todo-count"><strong>{{ Remaincount }}</strong> item left</span>
+            <ul class="filters ">
+                <li><a href="#/all" :class="{selected: filtertext == 'all'}">All</a></li>
+                <li><a href="#/active" :class="{selected: filtertext == 'active'}">Active</a></li>
+                <li><a href="#/completed" :class="{selected: filtertext == 'completed'}">Completed</a></li>
             </ul>
-            <button class="clear-completed">clear completed</button>
+            <button class="clear-completed" v-if="todos.some(item=> item.completed)" @click="handleClearAllDoneClick">clear completed</button>
         </footer>
     </section>
     <footer class="info">
         <p>双击编辑待办事项</p>
-        <p>Template by <a href="http://todomvc.com">you</a></p>
-        <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+        <p>Template by <a href="http://todomvc.com ">you</a></p>
+        <p>Part of <a href="http://todomvc.com ">TodoMVC</a></p>
     </footer>
+    <script src="node_modules/vue/dist/vue.js "></script>
+    <script src="js/app.js "></script>
 </body>
 
 </html>

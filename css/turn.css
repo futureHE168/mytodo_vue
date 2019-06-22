@@ -98,16 +98,18 @@
 
 @-webkit-keyframes willRotate {
     0% {
-        transform: rotateX(-33.5deg) rotateY(45deg);
+        transform: rotateX(33.5deg) rotateY(45deg);
     }
     50% {
-        transform: rotateX(-33.5deg) rotateY(180deg);
+        transform: rotateX(33.5deg) rotateY(180deg);
     }
     100% {
-        transform: rotateX(-33.5deg) rotateY(360deg);
+        transform: rotateX(33.5deg) rotateY(360deg);
     }
 }
 
+
+/*
 @keyframes willRotate {
     0% {
         transform: rotateX(-33.5deg) rotateY(45deg);
@@ -119,3 +121,4 @@
         transform: rotateX(-33.5deg) rotateY(360deg);
     }
 }
+*/

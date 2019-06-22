@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="components-demo">
+        <vue-component1></vue-component1>
+        <template v-if="show1 == 1">
+            <blog-post v-for="item in messages" v-bind:key="item.id" v-bind:title="item.title"></blog-post>
+            blog-post
+            <div v-html="myhtml"></div>
+            <div v-text="show1"></div>
+            <h1>show1 {{show1==1}}</h1>
+            <button-counter></button-counter>
+            <h1 v-if="awesome">Vue is awesome!</h1>
+            <h1 v-else>Oh no 😢</h1>
+        </template>
+        <template v-else-if="show2 == 2">
+            <h1>show2 {{show2==2}}</h1>
+            <button-counter></button-counter>
+            <h1 v-if="awesome">Vue is awesome1!</h1>
+            <h1 v-else>Oh no 😢</h1>
+        </template>
+        <template v-else-if="show3 == 3">
+            <h1>show3 {{show3==3}}</h1>
+            <button-counter></button-counter>
+            <h1 v-if="awesome">Vue is awesome2!</h1>
+            <h1 v-else>Oh no 😢</h1>
+        </template>
+    </div>
+    <div id="app">
+        <div>
+            <label>姓名</label>
+            <input type="textbox" v-model="inputnamefilter" name="">
+            <button @click="namefilter=inputnamefilter">查询</button>
+        </div>
+        <div>
+            <label>性别</label>
+            <input type="radio" name="gender" value='' v-model='genderfilter' checked>全部</input>
+            <input type="radio" name="gender" value='male' v-model='genderfilter'>男</input>
+            <input type="radio" name="gender" value='female' v-model='genderfilter'>女</input>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>gender</th>
+                </thead>
+                <tbody>
+                    <tr v-for="item in filterEm">
+                        <td>{{item.No}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.gender}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js "></script>
+    <script src="js/app1.js "></script>
+</body>
+
+</html>
